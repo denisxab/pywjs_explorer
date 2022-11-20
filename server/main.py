@@ -14,7 +14,7 @@ class UserWbsHandle(WbsHandle):
     # Разрешенные токены подключения
     allowed_token = set(['sysdba'])
     # Путь для кеша пользователей (опционально)
-    path_user_cache = './user_cache.sqlite'
+    path_user_cache = Path(__file__).parent / 'user_cache.sqlite'
     # Определяем логер. По умолчанию используется https://pypi.org/project/logsmal/
     logger: ABC_logger = defaultLogger(path_to_dir_log=Path(__file__).parent)
 

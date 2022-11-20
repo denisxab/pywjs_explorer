@@ -33,6 +33,7 @@ def step1(path_app: Path):
             path_app, path_run=path_app/'auto_run.py',
             path_python=path_python, path_server=path_server
         )
+        step6(path_gitignore=path_app/'.gitignore')
     else:
         print(
             f"Версия Python не подходит, необходимо иметь Python{setting['major']}.{setting['minor']}\nСсылка для скачивания:\t{setting['download_link']}")
@@ -74,14 +75,26 @@ else:
 
 
 # 5. Создать файл для запуска программы
-def step5(app_dir: Path, path_run: Path, path_python: Path, path_server: Path):
+def step5(path_app: Path, path_run: Path, path_python: Path, path_server: Path):
     path_run.write_text(f"""
 import webbrowser
 import os
 # Запустить html файл, в браузере по умолчанию
-webbrowser.open('file://' + '{ app_dir / 'client' / 'index.html'}')
+webbrowser.open('file://' + '{ path_app / 'client' / 'index.html'}')
 # Запустить файл `main.py`
 os.system('{path_python} {path_server/'main.py'}')
+    """)
+
+
+# 6. Создать `.gitignore`
+def step6(path_gitignore: Path):
+    path_gitignore.write_text("""
+.vscode
+__pycache__
+log
+server/venv
+*.log
+*.sqlite
     """)
 
 

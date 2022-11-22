@@ -51,4 +51,4 @@ virtualenv==20.16.7
 webencodings==0.5.1
 websockets==10.4
 zipp==3.10.0
-pywjs==0.0.1
+pywjs==0.0.4

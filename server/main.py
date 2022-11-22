@@ -17,7 +17,6 @@ class UserWbsHandle(WbsHandle):
     path_user_cache = Path(__file__).parent / 'user_cache.sqlite'
     # Определяем логер. По умолчанию используется https://pypi.org/project/logsmal/
     logger: ABC_logger = defaultLogger(path_to_dir_log=Path(__file__).parent)
-
     # Заполнить кеш пользователя значениями по умолчанию
     def init_user_cache(self) -> dict:
         return {

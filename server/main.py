@@ -18,6 +18,14 @@ class UserWbsHandle(WbsHandle):
     # Определяем логер. По умолчанию используется https://pypi.org/project/logsmal/
     logger: ABC_logger = defaultLogger(path_to_dir_log=Path(__file__).parent)
 
+    # Заполнить кеш пользователя значениями по умолчанию
+    def init_user_cache(self) -> dict:
+        return {
+            "base": {
+                'rawPath': '/'
+            }
+        }
+
 
 host = "localhost"
 port = 9999

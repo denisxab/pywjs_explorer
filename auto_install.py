@@ -2,7 +2,6 @@
 Установка виртуального окружения `Python`, и зависимостей из файла `./pyproject.toml`
 """
 
-import os
 import re
 import sys
 import venv
@@ -62,7 +61,6 @@ def step3(path_python: str, path_pyproject: Path, path_server: Path):
     subprocess.run(
         [path_python, '-m', 'poetry', 'install', '--sync'], cwd=path_server,
     )
-
 
 
 # 4. Создать файл для удаления venv

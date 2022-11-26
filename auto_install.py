@@ -14,17 +14,21 @@ setting = dict(
     download_link='https://www.python.org/downloads/'
 )
 
+path_app = Path(__file__).parent.resolve()
+path_server = path_app / 'server'
+path_env = path_server / 'venv'
+venv_obj = venv.EnvBuilder(with_pip=True, upgrade_deps=True)
+venv_context = venv_obj.ensure_directories(str(path_env))
+path_python = venv_context.env_exec_cmd
+
 
 # 1. Проверить версию текущего python
 def step1(path_app: Path):
     python_version = sys.version_info
     if python_version.major >= setting['major'] and python_version.minor >= setting['minor']:
-        path_server = path_app / 'server'
-        path_env = path_server / 'venv'
-        path_python = step2(path_env=path_env)
+        step2(path_env=path_env)
         step3(
             path_python=path_python,
-            path_pyproject=path_server,
             path_server=path_server
         )
         step4(
@@ -43,14 +47,11 @@ def step1(path_app: Path):
 # 2. Создать виртуальное окружение
 def step2(path_env: Path):
     # Создаем виртуально окружение в папке `./venv`
-    v = venv.EnvBuilder(with_pip=True, upgrade_deps=True)
-    v.create(str(path_env))
-    context = v.ensure_directories(str(path_env))
-    return context.env_exec_cmd
+    venv_obj.create(str(path_env))
 
 
 # 3. Установить зависимости из файла `./pyproject.toml` в ВО
-def step3(path_python: str, path_pyproject: Path, path_server: Path):
+def step3(path_python: str, path_server: Path):
     # Установка `poetry`
     subprocess.check_call([path_python, '-m', 'pip', 'install', 'poetry'])
     # Обновить файлы блокировки
@@ -105,11 +106,11 @@ def step6(path_gitignore: Path):
 __pycache__
 log
 server/venv
+server/plagins
 *.log
 *.sqlite
     """)
 
 
 if __name__ == '__main__':
-    path_app = Path(__file__).parent.resolve()
     step1(path_app)

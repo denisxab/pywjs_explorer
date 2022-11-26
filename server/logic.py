@@ -6,15 +6,12 @@ import pwd
 import stat
 from datetime import datetime
 from typing import Literal
-from  pywjs.wbs.subscribe import UserWbsSubscribe
-from pywjs.wbs.allowed_func import Transaction, UserWbsFunc
+from pywjs.wbs.subscribe import UserWbsSubscribe
+from pywjs.wbs.allowed_func import Transaction, AllowWbsFunc, StdAllowWbsFunc
 from asyncio import create_subprocess_shell, subprocess
 
 
-class MyWbsFunc(UserWbsFunc):
-
-    def sum(a: int | str, b: int | str):
-        return int(a) + int(b)
+class MyWbsFunc(AllowWbsFunc, StdAllowWbsFunc):
 
     # Асинхронная функция
     async def os_exe_async(command: str) -> dict:
@@ -73,7 +70,6 @@ class MyWbsFunc(UserWbsFunc):
             os.remove(f)
         return True
 
-    # Синхронная функция
     def getFileFromPath(path: str) -> list[dict[str, dict]]:
         """Получить список Файлов в указанной директории
 

@@ -3,7 +3,7 @@ from pathlib import Path
 from pywjs.wbs.server import wbs_main_loop
 from pywjs.wbs.handle import WbsHandle
 from pywjs.wbs.logger import ABC_logger, defaultLogger
-from explorer_user import MyWbsFunc, MyWbsSubscribe
+from logic import MyWbsFunc, MyWbsSubscribe
 
 
 class UserWbsHandle(WbsHandle):
@@ -18,6 +18,7 @@ class UserWbsHandle(WbsHandle):
     # Определяем логер. По умолчанию используется https://pypi.org/project/logsmal/
     logger: ABC_logger = defaultLogger(path_to_dir_log=Path(__file__).parent)
     # Заполнить кеш пользователя значениями по умолчанию
+
     def init_user_cache(self) -> dict:
         return {
             "base": {

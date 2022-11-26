@@ -87,11 +87,16 @@ def step5(path_run: Path, path_python: Path):
     # Относительный путь к venv
     path_python = re.sub('.+(venv.+)', '\g<1>', path_python)
     path_run.write_text(f"""
-from pathlib import Path
-import webbrowser
 import os
+import webbrowser
+from pathlib import Path
 
-sdir = Path(__file__).parent 
+from auto_update import check_update
+
+sdir = Path(__file__).parent
+
+# Проверить необходимость синхронизации и обновления
+check_update()
 # Запустить html файл, в браузере по умолчанию
 webbrowser.open(f"file://{{sdir / 'client' / 'index.html'}}")
 # Запустить файл `main.py`

@@ -7,6 +7,10 @@ from datetime import datetime
 from auto_install import step3, path_server, path_python
 
 
+def check_update():
+    syncGit()
+
+
 def syncGit():
     """Синхронизация проекта"""
     origin = 'origin'
@@ -39,6 +43,7 @@ def syncGit():
     else:
         # Нет различий локальной ветки от удаленной. Или не удалось узнать различий с удаленной веткой, из за отсутствия связи.
         ...
+
 
 def syncPyVenvDependents():
     """Синхронизация зависимостей для виртуального окружения Python"""

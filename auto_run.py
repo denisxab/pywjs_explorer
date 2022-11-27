@@ -8,7 +8,7 @@ from auto_update import check_update
 sdir = Path(__file__).parent
 
 # Проверить необходимость синхронизации и обновления
-check_update()
+check_update(only_info=True)
 # Запустить html файл, в браузере по умолчанию
 webbrowser.open(f"file://{sdir / 'client' / 'index.html'}")
 # Запустить файл `main.py`

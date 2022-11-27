@@ -10,6 +10,17 @@ python-versions = ">=3.6"
 typing_extensions = ">=3.7.2"
 
 [[package]]
+name = "commonmark"
+version = "0.9.1"
+description = "Python parser for the CommonMark Markdown spec"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+test = ["flake8 (==3.7.8)", "hypothesis (==3.55.3)"]
+
+[[package]]
 name = "jsonpickle"
 version = "2.2.0"
 description = "Python library for serializing any arbitrary object graph into JSON"
@@ -24,7 +35,7 @@ testing-libs = ["simplejson", "ujson", "yajl"]
 
 [[package]]
 name = "logsmal"
-version = "0.0.14"
+version = "0.0.15"
 description = "Создание файлов конфигураци"
 category = "main"
 optional = false
@@ -33,6 +44,7 @@ python-versions = ">=3.10,<4.0"
 [package.dependencies]
 jsonpickle = ">=2.2.0,<3.0.0"
 pydantic = ">=1.10.2,<2.0.0"
+rich = ">=12.6.0,<13.0.0"
 
 [[package]]
 name = "pydantic"
@@ -50,6 +62,17 @@ dotenv = ["python-dotenv (>=0.10.4)"]
 email = ["email-validator (>=1.0.3)"]
 
 [[package]]
+name = "pygments"
+version = "2.13.0"
+description = "Pygments is a syntax highlighting package written in Python."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+plugins = ["importlib-metadata"]
+
+[[package]]
 name = "pywjs"
 version = "0.0.6"
 description = ""
@@ -60,13 +83,28 @@ python-versions = ">=3.10"
 [package.dependencies]
 aiosqlite = ">=0.17.0,<0.18.0"
 jsonpickle = "2.2.0"
-logsmal = "0.0.14"
+logsmal = ">=0.0.15"
 pydantic = ">=1.10.2,<2.0.0"
 websockets = ">=10.4,<11.0"
 
 [package.source]
 type = "file"
 url = "../../../../MyProject/py_wjs/dist/pywjs-0.0.6-py3-none-any.whl"
+
+[[package]]
+name = "rich"
+version = "12.6.0"
+description = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
+category = "main"
+optional = false
+python-versions = ">=3.6.3,<4.0.0"
+
+[package.dependencies]
+commonmark = ">=0.9.0,<0.10.0"
+pygments = ">=2.6.0,<3.0.0"
+
+[package.extras]
+jupyter = ["ipywidgets (>=7.5.1,<8.0.0)"]
 
 [[package]]
 name = "typing-extensions"
@@ -94,13 +132,17 @@ aiosqlite = [
     {file = "aiosqlite-0.17.0-py3-none-any.whl", hash = "sha256:6c49dc6d3405929b1d08eeccc72306d3677503cc5e5e43771efc1e00232e8231"},
     {file = "aiosqlite-0.17.0.tar.gz", hash = "sha256:f0e6acc24bc4864149267ac82fb46dfb3be4455f99fe21df82609cc6e6baee51"},
 ]
+commonmark = [
+    {file = "commonmark-0.9.1-py2.py3-none-any.whl", hash = "sha256:da2f38c92590f83de410ba1a3cbceafbc74fee9def35f9251ba9a971d6d66fd9"},
+    {file = "commonmark-0.9.1.tar.gz", hash = "sha256:452f9dc859be7f06631ddcb328b6919c67984aca654e5fefb3914d54691aed60"},
+]
 jsonpickle = [
     {file = "jsonpickle-2.2.0-py2.py3-none-any.whl", hash = "sha256:de7f2613818aa4f234138ca11243d6359ff83ae528b2185efdd474f62bcf9ae1"},
     {file = "jsonpickle-2.2.0.tar.gz", hash = "sha256:7b272918b0554182e53dc340ddd62d9b7f902fec7e7b05620c04f3ccef479a0e"},
 ]
 logsmal = [
-    {file = "logsmal-0.0.14-py3-none-any.whl", hash = "sha256:df962f550b9ac25a9407db2453000210a5331d7d3c2eb9c94fc57d9b7d954d03"},
-    {file = "logsmal-0.0.14.tar.gz", hash = "sha256:460adccd76bbca843ddd7f4ebe7364c1df0af115a2776239c72e1f51d75300a9"},
+    {file = "logsmal-0.0.15-py3-none-any.whl", hash = "sha256:6b378cd381b96376b103e844d87041aafe26e5b49151a01cc6f48f77046e7860"},
+    {file = "logsmal-0.0.15.tar.gz", hash = "sha256:451fc7f41c59614982cefadca281d54d67c3680f1793204c7f5a935fd49bb502"},
 ]
 pydantic = [
     {file = "pydantic-1.10.2-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:bb6ad4489af1bac6955d38ebcb95079a836af31e4c4f74aba1ca05bb9f6027bd"},
@@ -140,8 +182,16 @@ pydantic = [
     {file = "pydantic-1.10.2-py3-none-any.whl", hash = "sha256:1b6ee725bd6e83ec78b1aa32c5b1fa67a3a65badddde3976bca5fe4568f27709"},
     {file = "pydantic-1.10.2.tar.gz", hash = "sha256:91b8e218852ef6007c2b98cd861601c6a09f1aa32bbbb74fab5b1c33d4a1e410"},
 ]
+pygments = [
+    {file = "Pygments-2.13.0-py3-none-any.whl", hash = "sha256:f643f331ab57ba3c9d89212ee4a2dabc6e94f117cf4eefde99a0574720d14c42"},
+    {file = "Pygments-2.13.0.tar.gz", hash = "sha256:56a8508ae95f98e2b9bdf93a6be5ae3f7d8af858b43e02c5a2ff083726be40c1"},
+]
 pywjs = [
-    {file = "pywjs-0.0.6-py3-none-any.whl", hash = "sha256:bffba54653848b675257cd64ad441d71e953af532f0e6d2828116950325e1c1a"},
+    {file = "pywjs-0.0.6-py3-none-any.whl", hash = "sha256:65ee88446c30a5e7444df7dd214caa3b5d2ba3419fe39fe2b53c0d375f61139d"},
+]
+rich = [
+    {file = "rich-12.6.0-py3-none-any.whl", hash = "sha256:a4eb26484f2c82589bd9a17c73d32a010b1e29d89f1604cd9bf3a2097b81bb5e"},
+    {file = "rich-12.6.0.tar.gz", hash = "sha256:ba3a3775974105c221d31141f2c116f4fd65c5ceb0698657a11e9f295ec93fd0"},
 ]
 typing-extensions = [
     {file = "typing_extensions-4.4.0-py3-none-any.whl", hash = "sha256:16fa4864408f655d35ec496218b85f79b3437c829e93320c7c9215ccfd92489e"},

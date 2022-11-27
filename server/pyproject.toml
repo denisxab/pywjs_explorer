@@ -13,6 +13,7 @@ websockets = "^10.4"
 pydantic = "^1.10.2"
 aiosqlite = "^0.17.0"
 logsmal = "0.0.14"
+pywjs = '0.0.5'
 
 [build-system]
 requires = ["poetry-core"]

@@ -50,6 +50,25 @@ dotenv = ["python-dotenv (>=0.10.4)"]
 email = ["email-validator (>=1.0.3)"]
 
 [[package]]
+name = "pywjs"
+version = "0.0.6"
+description = ""
+category = "main"
+optional = false
+python-versions = ">=3.10"
+
+[package.dependencies]
+aiosqlite = ">=0.17.0,<0.18.0"
+jsonpickle = "2.2.0"
+logsmal = "0.0.14"
+pydantic = ">=1.10.2,<2.0.0"
+websockets = ">=10.4,<11.0"
+
+[package.source]
+type = "file"
+url = "../../../../MyProject/py_wjs/dist/pywjs-0.0.6-py3-none-any.whl"
+
+[[package]]
 name = "typing-extensions"
 version = "4.4.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
@@ -68,7 +87,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "2fd0c48c64f5ed511cf9be559765afd575b5ffc62d7ff4987a6baa43cbb84ecd"
+content-hash = "98b454e085e2dd103a7f71d22281b26a833c5c248bdac22aa731183a5cb520b3"
 
 [metadata.files]
 aiosqlite = [
@@ -120,6 +139,9 @@ pydantic = [
     {file = "pydantic-1.10.2-cp39-cp39-win_amd64.whl", hash = "sha256:c1ba1afb396148bbc70e9eaa8c06c1716fdddabaf86e7027c5988bae2a829ab6"},
     {file = "pydantic-1.10.2-py3-none-any.whl", hash = "sha256:1b6ee725bd6e83ec78b1aa32c5b1fa67a3a65badddde3976bca5fe4568f27709"},
     {file = "pydantic-1.10.2.tar.gz", hash = "sha256:91b8e218852ef6007c2b98cd861601c6a09f1aa32bbbb74fab5b1c33d4a1e410"},
+]
+pywjs = [
+    {file = "pywjs-0.0.6-py3-none-any.whl", hash = "sha256:bffba54653848b675257cd64ad441d71e953af532f0e6d2828116950325e1c1a"},
 ]
 typing-extensions = [
     {file = "typing_extensions-4.4.0-py3-none-any.whl", hash = "sha256:16fa4864408f655d35ec496218b85f79b3437c829e93320c7c9215ccfd92489e"},

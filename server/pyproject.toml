@@ -12,8 +12,7 @@ jsonpickle = "2.2.0"
 websockets = "^10.4"
 pydantic = "^1.10.2"
 aiosqlite = "^0.17.0"
-logsmal = "0.0.14"
-pywjs = '0.0.5'
+pywjs =  { file = "/media/denis/dd19b13d-bd85-46bb-8db9-5b8f6cf7a825/MyProject/py_wjs/dist/pywjs-0.0.6-py3-none-any.whl" }
 
 [build-system]
 requires = ["poetry-core"]

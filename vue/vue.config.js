@@ -5,7 +5,7 @@ module.exports = {
   ...defineConfig({
     transpileDependencies: true
   }),
-  outputDir: '/media/denis/dd19b13d-bd85-46bb-8db9-5b8f6cf7a825/test/test_pywjs/' + 'src',
+  outputDir: resolve('../clients/index.html'),
   publicPath: './',
   configureWebpack: {
     resolve: {

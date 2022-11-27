@@ -39,6 +39,7 @@ def step1(path_app: Path):
             path_python=path_python
         )
         step6(path_gitignore=path_app/'.gitignore')
+        step7(path_auto_update=path_app/'auto_update.py')
     else:
         print(
             f"Версия Python не подходит, необходимо иметь Python{setting['major']}.{setting['minor']}\nСсылка для скачивания:\t{setting['download_link']}")
@@ -96,12 +97,13 @@ from auto_update import check_update
 sdir = Path(__file__).parent
 
 # Проверить необходимость синхронизации и обновления
-check_update(only_info=True)
+check_update(only_info=False)
 # Запустить html файл, в браузере по умолчанию
 webbrowser.open(f"file://{{sdir / 'client' / 'index.html'}}")
 # Запустить файл `main.py`
 os.system(f"{{sdir / 'server' / '{path_python}'}} {{sdir /'server'/ 'main.py'}}")
     """)
+
 
 # 6. Создать `.gitignore`
 def step6(path_gitignore: Path):
@@ -114,6 +116,7 @@ server/plagins
 *.log
 *.sqlite
     """)
+
 
 # 7. Создать файл для автоматического обновления
 def step7(path_auto_update: Path):
@@ -130,12 +133,9 @@ from auto_install import step3, path_server, path_python
 def check_update(only_info=True):
     syncGit(only_info=only_info)
 
-
 def syncGit(only_info=True):
     """
-
     only_info: Если True, то тогда только проинформировать о различиях, и не пытаться(откатиться/обновиться)
-
     """
     """Синхронизация проекта"""
     origin = 'origin'
@@ -143,13 +143,13 @@ def syncGit(only_info=True):
     select_branch: str = subprocess.run(
         'git --no-pager branch --no-color --show-current', shell=True,
         stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding='utf-8'
-    ).stdout.replace('\n', '')
+    ).stdout.replace('\\n', '')
     if not select_branch:
         raise ValueError("Пустая ветка")
     # Проверить синхронизацию текущего локального проекта(даже если изменения небыли за комичены), с удаленной веткой.
     diff: str = subprocess.run(
         f'git --no-pager diff {origin}/{select_branch} --raw --name-status', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding='utf-8'
-    ).stdout.replace('\n', '')
+    ).stdout.replace('\\n', '')
     if diff:
         #
         # Если есть различия в локальной и удаленной ветки
@@ -173,11 +173,9 @@ def syncGit(only_info=True):
         # Нет различий локальной ветки от удаленной. Или не удалось узнать различий с удаленной веткой, из за отсутствия связи.
         ...
 
-
 def syncPyVenvDependents():
     """Синхронизация зависимостей для виртуального окружения Python"""
     step3(path_python=path_python, path_server=path_server)
-
     ''')
 
 

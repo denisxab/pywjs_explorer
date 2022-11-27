@@ -38,6 +38,7 @@ def syncGit():
         # Принудительно(во всех спорных случая берем данные из удаленной ветки) синхронизируем локальную ветку с удаленной.
         subprocess.run(
             f'git reset --hard {origin}/{select_branch}', shell=True)
+        print('GitReset')
         # Выполняем синхронизацию зависимостей в виртуальном окружение `Python`
         syncPyVenvDependents()
     else:

@@ -30,14 +30,14 @@ def syncGit():
         # Если есть различия в локальной и удаленной ветки
         #
         # Делаем коммит текущих локальных изменений.
-        # subprocess.run('git add -A', shell=True, check=True)
-        # subprocess.run(
-        #     f"git commit -m 'CommitByAutoUpdate:{datetime.now()}'", shell=True,check=True)
-        # # Получаем всю информацию об изменениях на удаленной ветки.
-        # subprocess.run('git fetch --all', shell=True, check=True)
-        # # Принудительно(во всех спорных случая берем данные из удаленной ветки) синхронизируем локальную ветку с удаленной.
-        # subprocess.run(
-        #     f'git reset --hard {origin}/{select_branch}', shell=True)
+        subprocess.run('git add -A', shell=True, check=True)
+        subprocess.run(
+            f"git commit -m 'CommitByAutoUpdate:{datetime.now()}'", shell=True,check=True)
+        # Получаем всю информацию об изменениях на удаленной ветки.
+        subprocess.run('git fetch --all', shell=True, check=True)
+        # Принудительно(во всех спорных случая берем данные из удаленной ветки) синхронизируем локальную ветку с удаленной.
+        subprocess.run(
+            f'git reset --hard {origin}/{select_branch}', shell=True)
         print('GitReset')
         # # Выполняем синхронизацию зависимостей в виртуальном окружение `Python`
         # syncPyVenvDependents()
@@ -49,3 +49,4 @@ def syncGit():
 def syncPyVenvDependents():
     """Синхронизация зависимостей для виртуального окружения Python"""
     step3(path_python=path_python, path_server=path_server)
+

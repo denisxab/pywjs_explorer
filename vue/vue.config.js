@@ -5,7 +5,7 @@ module.exports = {
   ...defineConfig({
     transpileDependencies: true
   }),
-  outputDir: resolve('../clients/index.html'),
+  outputDir: path.resolve('../client/'),
   publicPath: './',
   configureWebpack: {
     resolve: {
